@@ -1,0 +1,5 @@
+-- Suppose that there exists a function which is part of the equality class.
+-- This means that two functions can be compared with the operators, == and /=.
+-- For two functions f(x) == g(x) will be true when they return the same result, and false if they don't (opposite applies to /=).
+-- In general it's assumed two functions that solve different problems won't be equal for all values of x. 
+-- However, one may want to test if two functions are equal at any point, such as finding the point of intersection for a graphical maths problem.

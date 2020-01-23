@@ -1,0 +1,16 @@
+Before we move on to files, 
+let's take a look at some functions that are useful when dealing with I/O.
+
+putStr is much like putStrLn in that it takes a string as a parameter and returns an I/O action that will print that string to the terminal, 
+only putStr doesn't jump into a new line after printing out the string while putStrLn does.
+
+main = do   putStr "Hey, "  
+            putStr "I'm "  
+            putStrLn "Andy!"   
+$ runhaskell putstr_test.hs  
+Hey, I'm Andy!  
+Its type signature is putStr :: String -> IO (), 
+so the result encapsulated within the resulting I/O action is the unit. 
+A dud value, so it doesn't make sense to bind it.
+
+putChar takes a character and returns an I/O action that will print it out to the terminal.

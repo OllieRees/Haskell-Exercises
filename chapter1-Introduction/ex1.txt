@@ -1,0 +1,16 @@
+double :: Num a => a -> a is shown to be executed as such:
+double x = x + x
+I'm changing the double method to be, 
+double x = x * 2. 
+
+double (double 2) is exceuted in 2 ways:
+
+double (2 * 2) //applying double 2
+double 4 //applying 2 * 2
+4 * 2 //applying double 4
+8 //applying 4 * 2
+
+double 2 * 2 //applying double(double (2)) where double(2) is an unknown var
+4 * 2 //applying double(2) 
+8 //applying 4 * 2
+
