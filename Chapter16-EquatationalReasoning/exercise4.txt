@@ -1,0 +1,52 @@
+FUNCTIONS
+f1 := [] ++ ys = ys
+f2 := (x:xs) ++ ys = x : (xs ++ ys)
+
+EQUATION : e1
+xs ++ [] = xs
+
+BASE CASE
+{START: xs = []}
+[] ++ []
+{APPLY f1}
+[]
+{RESULT}
+[] ++ [] = []
+xs ++ [] = xs
+
+INDUCTION
+{START: xs = (x:xs)}
+(x:xs) ++ []
+{APPLY f2}
+x : (xs ++ [])
+{INDUCTIVE STEP}
+x : xs
+{APPLY START-DEF}
+xs
+
+EQUATION : e2
+xs ++ (ys ++ zs) = (xs ++ ys) ++ zs
+
+BASE CASE
+{START : xs = []}
+[] ++ (ys ++ zs)
+{APPLY f1}
+ys ++ zs
+{REVERSE OF f1}
+([] ++ ys) ++ zs
+{APPLY START-DEF}
+(xs ++ ys) ++ zs
+
+INDUCTION
+{START : xs = (x:xs)}
+(x:xs) ++ (ys ++ zs)
+{APPLY f2}
+x : (xs ++ (ys ++ zs))
+{INDUCTIVE STEP}
+x : ((xs ++ ys) ++ zs)
+{REVERSE OF f2}
+x:(xs ++ ys) ++ zs
+{REVERSE OF f2}
+((x:xs) ++ ys) ++ zs
+{APPLY START-DEF}
+(xs ++ ys) ++ zs

@@ -1,0 +1,50 @@
+FMAP DEFINITION
+
+f1 := fmap _ Nothing = Nothing
+f2 := fmap f (Just x) = Just (f x)
+
+ID DEFINITION
+
+f3 := id x = x
+
+FUNCTION COMPOSITION DEFINITION
+f4 := (f . g) x = f (g x)
+
+FUNCTOR LAWS
+
+l1 := fmap id Nothing = Nothing
+l2 := fmap id (Just x) = Just x
+
+l3 := fmap (f . g) Nothing = Nothing
+l4 := fmap (f . g) (Just x) = fmap f (Just (g x))
+
+USING DEFINITION OF FMAP
+fmap f (Just x) = Just (f x)
+fmap g (Just x) = Just (g x)
+
+PROVING l1
+{APPLY f1}
+fmap _ Nothing = Nothing
+
+PROVING l2
+fmap id (Just x)
+{APPLY f2}
+Just (id x)
+{APPLY f3}
+Just x
+
+PROVING l3
+fmap _ Nothing = Nothing
+
+PROVING l4
+fmap (f . g) (Just x)
+{APPLY f2}
+Just ((f . g) x)
+{APPLY f4}
+Just (f (g x))
+{DEF1 := gx = g x}
+Just (f gx)
+{REVERSE OF f2}
+fmap f (Just gx)
+{USE DEF1}
+fmap f (Just (g x))

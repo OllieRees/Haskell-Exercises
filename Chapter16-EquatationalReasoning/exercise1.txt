@@ -1,0 +1,37 @@
+data Nat = Succ Nat | Zero
+
+FUNCTION DEFINITION
+f1 := add Zero n = n
+f2 := add (Succ m) n = Succ (add m n)
+
+RULES
+r1 := add Zero Zero = Zero
+
+EQUATION
+-------------------------------
+add n (Succ m) = Succ (add n m)
+
+BASE CASE
+-------------------------------
+add Zero (Succ Zero)
+{APPLY f1}
+{RESULT}
+Succ Zero
+{REVERSE OF r1}
+Succ (add Zero Zero)
+{RESULT}
+
+INDUCTIVE CASE
+-------------------------------
+add (Succ n) (Succ m)
+{APPLY f2}
+Succ (add n (Succ m))
+{INDUCTIVE HYPOTHESIS}
+Succ (Succ (add n m))
+{REVERSE OF f2}
+Succ (add (Succ n) m)
+{REDEFINE VARIABLES}
+n' = Succ n
+m' = m
+{EXPRESS IN NEW VARS}
+add n' (Succ m') = Succ (add n' m') (EQUATION)

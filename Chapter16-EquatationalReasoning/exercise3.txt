@@ -1,0 +1,38 @@
+FUNCTION
+f1 := all p [] = TRUE
+f2 := all p (x:xs) = p x && all p xs
+
+f3 := replicate 0 _ = []
+f4 := replicate n x = x:(replicate (n - 1) x)
+
+RULES
+r1 := (== x) y == y == x
+r2 := x == x = TRUE
+r3 := TRUE && TRUE = TRUE
+
+EQUATION
+all (== x) (replicate n x) = TRUE
+
+BASE CASE
+{n = 0}
+all (== x) (replicate 0 x)
+{APPLY f3}
+all (== x) []
+{APPLY f1}
+TRUE
+
+INDUCTIVE CASE
+{START}
+all (== x) (replicate (n + 1) x)
+{APPLY f4}
+all (== x) (x:(replicate n x))
+{APPLY f2}
+(== x) x && all (== x) (replicate n x)
+{INDUCTIVE STEP}
+(== x) x && TRUE
+{APPLY r1}
+x == x && TRUE
+{APPLY r2}
+TRUE && TRUE
+{APPLY r3}
+TRUE

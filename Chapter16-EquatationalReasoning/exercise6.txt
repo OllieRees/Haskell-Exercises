@@ -1,0 +1,40 @@
+data Tree = Leaf Int | Node Tree Tree
+
+FUNCTIONS
+f1 := leafCount (Leaf _) = 1
+f2 := leafCount (Node l r) = (leafCount l) + (leafCount r)
+
+f3 := nodeCount (Leaf _) = 0
+f4 := nodeCount (Node l r) = 1 + (nodeCount l) + (nodeCount r)
+
+EQUATION
+1 + nodeCount t = leafCount t
+
+BASE CASE
+{START : t = Leaf}
+1 + nodeCount (Leaf)
+{APPLY f3}
+1 + 0
+{BASIC ADDITION}
+1
+{REVERSE OF f1}
+leafCount Leaf
+{RESULT}
+1 + nodeCount Leaf = leafCount Leaf
+
+INDUCTIVE HYPOTHESIS
+{Start : t = Node x x}
+1 + nodeCount (Node x x)
+{APPLY f4}
+1 + 1 + (nodeCount x) + (nodeCount x)
+{REARRANGE}
+1 + (nodeCount x) + 1 + (nodeCount x)
+{INDUCTIVE STEP}
+leafCount x + leafCount x
+{REVERSE OF f2}
+leafCount (Node x x)
+{RESULT}
+1 + nodeCount (Node x x) = leafCount (Node x x)
+{USE START-DEF}
+1 + nodeCount t = leafCount t
+{EQUATION}
