@@ -1,3 +1,0 @@
-Adding the option for the second argument of the operations (+ and *) to be empty improves the efficiency when dealing with expressions without said operations.
-This is because an expression of a single number had to go through all the possible data values of the type, but now they cascade down the types to Nat.
-Furthermore, an expression with just * is improved as it no longer needs to check the data values of the expr type. It just goes to term and evaluates from there.
