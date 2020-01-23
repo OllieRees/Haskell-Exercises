@@ -1,0 +1,18 @@
+f1 := 1 + (2 * 3)
+1 + (2 * 3) (OUTERMOST)
+2 * 3 (INNERMOST)
+
+f2 := (1 + 2) * (2 + 3)
+(1 + 2) * (2 + 3) (OUTERMOST)
+(1 + 2) (INNERMOST)
+(2 + 3) (INNERMOST)
+
+f3 := fst (1 + 2, 2 + 3)
+fst (1 + 2, 2 + 3) (OUTERMOST)
+1 + 2 (INNERMOST)
+2 + 3 (INNERMOST)
+
+f4 := (\x -> 1 + x) (2 * 3)
+(\x -> 1 + x) (2 * 3) (INNERMOST)
+1 + x (INNERMOST)
+2 * 3 (INNERMOST)

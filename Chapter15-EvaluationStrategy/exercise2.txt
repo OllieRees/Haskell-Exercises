@@ -1,0 +1,28 @@
+f := fst (1 + 2, 2 + 3)
+
+OUTERMOST EVAL. OF F
+--------------------
+{BEGIN}
+fst (1 + 2, 2 + 3)
+1 : {APPLY fst}
+1 + 2
+2 : {APPLY add}
+3
+
+TOTAL STEPS : 2
+
+INNERMOST EVAL. OF F
+--------------------
+{BEGIN}
+fst (1 + 2, 2 + 3)
+1 : {APPLY LEFT add}
+fst (3, 2 + 3)
+2 : {APPLY RIGHT add}
+fst (3, 5)
+3 : {APPLY fst}
+3
+
+TOTAL STEPS : 3
+
+We use more steps in innermost, since we evaluate the second expression in the tuple (2 + 3). This expression is unused  in our overall expression, and result.
+

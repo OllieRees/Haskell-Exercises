@@ -1,0 +1,31 @@
+mult = \x -> (\y -> x * y)
+
+mult 3 4 = (\x -> (\y -> x * y)) 3 4
+
+
+FIRST : Left-Most, Args First
+----------
+1 : (3 -> \y -> x * y) 4
+2 : (3 -> 4 -> x * y)
+3 : 3 * 4
+----------
+SECOND : Left-Most, Body First
+----------
+1 : (3 -> \y -> x * y) 4
+2 : (\y -> 3 * y) 4
+3 : 4 -> 3 * y
+4 : 3 * 4
+----------
+THIRD : Right-Most, Args First
+----------
+1 : (\x -> 4 -> x * y) 3
+2 : (3 -> 4 -> x * y)
+3 : 3 * 4
+----------
+FOURTH : Right-Most, Body First
+---------
+1 : (\x -> 4 -> x * y) 3
+2 : (\x -> 4 -> X * 4) 3
+3 : (3 -> 4 -> x * 4)
+4 : 3 * 4
+----------
